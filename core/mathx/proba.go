@@ -23,6 +23,7 @@ func NewProba() *Proba {
 // TrueOnProba checks if true on given probability.
 func (p *Proba) TrueOnProba(proba float64) (truth bool) {
 	p.lock.Lock()
+	// 当 proba 越大时，truth 为真的概率就越大。
 	truth = p.r.Float64() < proba
 	p.lock.Unlock()
 	return
